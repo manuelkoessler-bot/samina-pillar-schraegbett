@@ -199,6 +199,17 @@ body{background:var(--linen);color:var(--ink);font-family:var(--sans);font-size:
   .lonsec .txt{max-width:none}
 }
 
+/* ───────── Pionier + Story ───────── */
+.story{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:center}
+.story figure{margin:0;aspect-ratio:4/5;overflow:hidden}
+.story figure img{width:100%;height:100%;object-fit:cover;object-position:60% 30%}
+.story-txt{display:grid;gap:18px;max-width:58ch}
+.story-txt h3{font-size:clamp(32px,3.6vw,52px);line-height:1.02}
+.story-txt p{color:var(--ink-2)}
+.story-txt blockquote{margin:6px 0 0;font-family:var(--serif);font-style:italic;font-size:clamp(20px,1.8vw,26px);line-height:1.3;border-left:2px solid var(--room);padding-left:18px;display:grid;gap:8px}
+.story-txt cite{font-family:var(--sans);font-style:normal;font-size:13px;color:var(--ink-2)}
+@media (max-width:900px){ .story{grid-template-columns:minmax(0,1fr)} .story figure{aspect-ratio:4/3} }
+
 /* ───────── Was ist ein Schrägbett ───────── */
 .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
 .cmp{background:var(--linen);padding:clamp(22px,3vw,36px);display:grid;gap:14px;align-content:start}
@@ -300,10 +311,11 @@ table.vs tbody th{font-weight:600;width:22%}
 /* ───────── Zeitachse auf 3,5° ───────── */
 .time{position:relative;margin-top:24px}
 .time .slope{position:absolute;left:0;right:-8%;top:34px;height:1px;background:var(--room);transform-origin:0 0;transform:rotate(3.5deg)}
-.time ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;position:relative}
-.time li{display:grid;gap:10px;align-content:start;margin-top:calc(var(--i) * (min(1208px, 100vw - 32px) + 20px) / 5 * .0612)}
-.time li .yr{background:var(--stone);width:fit-content;padding-right:8px}
-.time li .dot{width:13px;height:13px;border-radius:50%;background:var(--room);box-shadow:0 0 0 6px var(--stone);margin-top:28px}
+.time{margin-top:clamp(56px,7vw,96px)}
+.time ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;position:relative}
+.time li{display:grid;gap:10px;align-content:start;margin-top:calc(var(--i) * (min(1208px, 100vw - 32px) + 20px) / 6 * .0612)}
+.time li .yr{background:var(--linen);width:fit-content;padding-right:8px}
+.time li .dot{width:13px;height:13px;border-radius:50%;background:var(--room);box-shadow:0 0 0 6px var(--linen);margin-top:28px}
 .time .yr{font-family:var(--serif);font-size:clamp(26px,2.6vw,34px);line-height:1;color:var(--room)}
 
 /* ───────── Für wen ───────── */
@@ -400,6 +412,8 @@ table.vs tbody th{font-weight:600;width:22%}
 }
 </style>
 
+</head>
+<body>
 <div class="sgp" id="sgp">
 
 <!-- ═════════ 1 · HERO (Scroll-Scrub „Shortcut Bettrahmen“, randlos) ═════════ -->
@@ -428,7 +442,7 @@ table.vs tbody th{font-weight:600;width:22%}
       <figcaption>
         <span class="chip">Bekannt aus dem JENKE-Experiment auf Pro7 | Joyn</span>
         <b>Prof. Dr. med. h.c. Günther W. Amann-Jennson</b>
-        <span class="role">Schlafforscher und SAMINA-Gründer, forscht seit 20 Jahren zum Schrägschlafen</span>
+        <span class="role">Schlafforscher, SAMINA-Gründer und einer der Pioniere des Ganzkörper-Schrägschlafs</span>
       </figcaption>
     </figure>
     <div class="intro" id="intro">Massivholz. Metallfrei.</div>
@@ -468,7 +482,7 @@ table.vs tbody th{font-weight:600;width:22%}
     </div>
     <p class="small muted" style="margin-top:14px">Werte für ein 2 m langes Bett.</p>
     <nav class="toc" aria-label="Auf dieser Seite">
-      <a href="#longevity">Longevity und Schlaf</a><a href="#was">Was ist ein Schrägbett?</a><a href="#labor">Wie viel Grad, wie viel cm?</a><a href="#buecher">Bücher, Keil oder Schrägbett?</a><a href="#system">Mehr als schräg</a><a href="#forschung">Was die Forschung sagt</a><a href="#anfrage">Preis &amp; Probe liegen</a><a href="#faq">Fragen</a>
+      <a href="#longevity">Longevity und Schlaf</a><a href="#pionier">Wie alles begann</a><a href="#was">Was ist ein Schrägbett?</a><a href="#labor">Wie viel Grad, wie viel cm?</a><a href="#buecher">Bücher, Keil oder Schrägbett?</a><a href="#system">Mehr als schräg</a><a href="#forschung">Was die Forschung sagt</a><a href="#anfrage">Preis &amp; Probe liegen</a><a href="#faq">Fragen</a>
     </nav>
   </div>
 </section>
@@ -483,6 +497,37 @@ table.vs tbody th{font-weight:600;width:22%}
       <div class="lon-big"><b>90 %</b><span>Longevity beginnt im Schlaf.<small>Prof. W. C. Dement, Stanford, 1998</small></span></div>
       <p>Supplements, Sport, Tracker: Über Longevity wird viel geredet. Der größte Hebel ist die Zeit, in der dein Körper regeneriert. 120 Tage im Jahr liegst du im Bett. Darum ist ein Schrägbett bei SAMINA Teil eines Schlafsystems, entwickelt für deinen regenerativen Schlaf.</p>
       <div class="ctas"><a class="btn" href="#anfrage" data-intent="probe">Probe liegen in deiner Nähe <span class="arr">→</span></a><a class="btn ghost" href="https://samina.com/longevity/" target="_blank" rel="noopener">Mehr zu Longevity</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 2c · PIONIER + DAVIDS GESCHICHTE (Leinen) ═════════ -->
+<section class="sec bg-linen" id="pionier">
+  <div class="wrap">
+    <div class="head">
+      <h2><span class="eyebrow ey">Pionier des Ganzkörper-Schrägschlafs</span>Schrägschlafen hat niemand erfunden. Wir haben es ins Schlafsystem gebracht.</h2>
+      <p class="lead muted">Schon im alten Ägypten standen Betten leicht geneigt. SAMINA gehört zu den Pionieren, die diese alte Idee professionell umgesetzt haben: als Ganzkörper-Schräglage, eingebaut in ein vollständiges Schlafsystem.</p>
+    </div>
+    <div class="story">
+      <figure><img src="img/wiss_guenther.jpg" alt="Prof. Dr. med. h.c. Günther W. Amann-Jennson im Garten an einem Baum" loading="lazy"></figure>
+      <div class="story-txt">
+        <span class="eyebrow">Wie alles begann</span>
+        <h3>Drei Tage, ein Bett, 5,5 Grad.</h3>
+        <p>Als Philipps Sohn David fünf Jahre alt war, schlief er nachts sehr unruhig. Sein Großvater Günther wollte nicht abwarten. Gemeinsam mit einem SAMINA-Schreinerpartner baute er in nur drei Tagen ein erstes Ganzkörper-Schrägbett mit 5,5° Neigung.</p>
+        <p>Für Günther war das der Moment, aus jahrelangen Überlegungen Praxis zu machen. Aus diesem ersten Bett wurde SAMINA GRAVITAS®.</p>
+        <blockquote>„Unsere Entwicklung ist aus einer ganz konkreten menschlichen Herausforderung entstanden.“<cite>Prof. Dr. med. h.c. Günther W. Amann-Jennson</cite></blockquote>
+      </div>
+    </div>
+    <div class="time">
+      <div class="slope" aria-hidden="true"></div>
+      <ol>
+        <li style="--i:0"><span class="dot"></span><span class="yr">2600 v. Chr.</span><p class="small muted">Das Bett der ägyptischen Königin Hetepheres I. hat ein Fußbrett. Viele Betten dieser Zeit sind zum Kopf hin leicht erhöht.</p></li>
+        <li style="--i:1"><span class="dot"></span><span class="yr">1642</span><p class="small muted">Der schwedische Leibarzt Andreas Sparman rät, mit leicht erhöhtem Oberkörper zu schlafen.</p></li>
+        <li style="--i:2"><span class="dot"></span><span class="yr">ab 2006</span><p class="small muted">Günther Amann-Jennson beginnt, mit der Ganzkörper-Schräglage zu experimentieren, im langjährigen Austausch mit dem Berliner Neurophysiologen Prof. Dr. Karl Hecht.</p></li>
+        <li style="--i:3"><span class="dot"></span><span class="yr">Prototyp</span><p class="small muted">Prof. Hecht schläft selbst auf einem SAMINA-Prototyp mit 5,5° und komplettem Schlafsystem und misst seinen Schlaf.</p></li>
+        <li style="--i:4"><span class="dot"></span><span class="yr">ab 2011</span><p class="small muted">SAMINA setzt die Ganzkörper-Schräglage professionell in eigenen Bettgestellen um. Heute: Bettrahmen Adriano mit Gravitas®.</p></li>
+        <li style="--i:5"><span class="dot"></span><span class="yr">2026</span><p class="small muted">Das Schrägbett im Experiment „JENKE. Experiment. Schlaflos“ auf Pro7 | Joyn.</p></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -620,7 +665,6 @@ table.vs tbody th{font-weight:600;width:22%}
     <div class="head">
       <h2><span class="eyebrow ey">Schrägbett mit Schlafsystem</span>Ein Schrägbett ist nur so gut wie das, was darauf liegt.</h2>
       <p class="lead muted">Das SAMINA Schlafsystem besteht aus fünf Schichten aus Naturmaterialien und passt in nahezu jeden Bettrahmen. Schräg schläfst du, wenn du es mit dem Bettrahmen Adriano kombinierst: Er ist optional, bringt aber die Gravitas®-Schrägschlaftechnik mit.</p>
-      <p class="muted" style="border-left:2px solid var(--room);padding-left:16px;max-width:60ch">„Schrägschlafen hat niemand erfunden. Ein schräges Bett verändert den Winkel. SAMINA GRAVITAS® verbindet diesen Winkel mit allem, was regenerativer Schlaf sonst noch braucht.“<br><span class="small">Prof. Dr. med. h.c. Günther W. Amann-Jennson, wissenschaftliche Leitung SAMINA</span></p>
     </div>
     <div class="sys">
       <div class="explode" id="explode">
@@ -718,7 +762,7 @@ table.vs tbody th{font-weight:600;width:22%}
       </article>
     </div>
     <div class="why">
-      <figure><img src="img/wiss_guenther.jpg" alt="Prof. Dr. med. h.c. Günther W. Amann-Jennson an einem Baum im Garten" loading="lazy" style="object-position:62% 30%"></figure>
+      <figure><img src="img/wiss_forscher_hoch.jpg" alt="Schlafforscher im weißen Hemd mit Unterlagen" loading="lazy" style="object-position:38% 10%"></figure>
       <div style="display:grid;gap:20px">
         <p class="eyebrow">Prof. Dr. med. h.c. Günther W. Amann-Jennson · Warum 3,5° und 5,5°?</p>
         <h3 style="font-size:clamp(28px,3vw,40px)">Sanft genug, um dabeizubleiben.</h3>
@@ -735,27 +779,8 @@ table.vs tbody th{font-weight:600;width:22%}
   </div>
 </section>
 
-<!-- ═════════ 9 · GESCHICHTE (B-Ton, Zeitachse auf 3,5°) ═════════ -->
-<section class="sec bg-stone" id="geschichte">
-  <div class="wrap">
-    <div class="head">
-      <h2><span class="eyebrow ey">Geschichte des Schrägschlafens</span>Wenige Grad. Seit Jahrtausenden.</h2>
-    </div>
-    <div class="time">
-      <div class="slope" aria-hidden="true"></div>
-      <ol>
-        <li style="--i:0"><span class="dot"></span><span class="yr">2600 v. Chr.</span><p class="small muted">Das Bett der ägyptischen Königin Hetepheres I. hat ein Fußbrett. Viele Betten dieser Zeit sind zum Kopf hin leicht erhöht.</p></li>
-        <li style="--i:1"><span class="dot"></span><span class="yr">1642</span><p class="small muted">Der schwedische Leibarzt Andreas Sparman rät, mit leicht erhöhtem Oberkörper zu schlafen.</p></li>
-        <li style="--i:2"><span class="dot"></span><span class="yr">ab 2006</span><p class="small muted">Prof. Dr. med. h.c. Günther W. Amann-Jennson beginnt mit der Ganzkörper-Schräglage zu experimentieren, im Austausch mit dem Berliner Schlafforscher Prof. Karl Hecht. Seit rund 15 Jahren baut SAMINA sie in eigene Bettgestelle.</p></li>
-        <li style="--i:3"><span class="dot"></span><span class="yr">2019</span><p class="small muted">Die Raumfahrtmedizin simuliert Schwerelosigkeit mit 6° Kopf-tief. Wenige Grad verändern viel.</p></li>
-        <li style="--i:4"><span class="dot"></span><span class="yr">2026</span><p class="small muted">Das Schrägbett im ProSieben-Experiment „JENKE. Experiment. Schlaflos“.</p></li>
-      </ol>
-    </div>
-  </div>
-</section>
-
 <!-- ═════════ 10 · FÜR WEN (Leinen) ═════════ -->
-<section class="sec bg-linen" id="fuerwen">
+<section class="sec bg-stone" id="fuerwen">
   <div class="wrap">
     <div class="head">
       <h2><span class="eyebrow ey">Für wen ist ein Schrägbett?</span>Passt es zu dir?</h2>
