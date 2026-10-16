@@ -210,6 +210,12 @@ body{background:var(--linen);color:var(--ink);font-family:var(--sans);font-size:
 .story-txt cite{font-family:var(--sans);font-style:normal;font-size:13px;color:var(--ink-2)}
 @media (max-width:900px){ .story{grid-template-columns:minmax(0,1fr)} .story figure{aspect-ratio:4/3} }
 
+.watch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:6px}
+.watch a{display:grid;gap:6px;padding:18px 20px;border:1px solid var(--line);background:#fff;text-decoration:none;transition:border-color .2s,transform .2s}
+.watch a:hover{border-color:var(--room);transform:translateY(-2px)}
+.watch b{font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.2}
+.watch .go{font-size:14px;font-weight:600;color:var(--room)}
+@media (max-width:620px){ .watch{grid-template-columns:minmax(0,1fr)} }
 /* ───────── Was ist ein Schrägbett ───────── */
 .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
 .cmp{background:var(--linen);padding:clamp(22px,3vw,36px);display:grid;gap:14px;align-content:start}
@@ -472,6 +478,10 @@ table.vs tbody th{font-weight:600;width:22%}
         <p class="lead">Im Experiment „JENKE. Experiment. Schlaflos“ auf ProSieben | Joyn ging es um ein Bett, das sich neigt. Das ist Gravitas®, die Schrägschlaftechnik von SAMINA.</p>
         <p class="muted">Mit dabei war SAMINA-Gründer und Schlafforscher Prof. Dr. med. h.c. Günther W. Amann-Jennson. Er beschäftigt sich seit rund 20 Jahren mit dem Schlafen in Schräglage.</p>
         <p class="muted">Kein Keil und kein hochgestelltes Kopfteil: Der ganze Körper liegt in einer sanften Neigung, Kopf leicht oben, Füße leicht unten. Eingebaut in den Bettrahmen Adriano, einstellbar mit einem Handgriff.</p>
+        <div class="watch">
+          <a href="https://video.glomex.com/news/v-dlzbv80qtto9-19-000-euro-bett-fur-besseren-schlaf-kann-man-sich-guten-schlaf-kaufen" target="_blank" rel="noopener"><span class="eyebrow">Kurzbeitrag</span><b>Das SAMINA-Experiment</b><span class="go">Beitrag ansehen ↗</span></a>
+          <a href="https://www.joyn.de/play/serien/jenke/12-1-jenke-experiment-schlaflos-wie-uns-schlechter-schlaf-krank-macht" target="_blank" rel="noopener"><span class="eyebrow">Ganze Folge · 108 Min.</span><b>JENKE. Experiment. Schlaflos</b><span class="go">Kostenlos auf Joyn ↗</span></a>
+        </div>
       </div>
     </div>
     <div class="dataline">
