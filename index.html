@@ -261,6 +261,23 @@ table.vs thead th.us{color:var(--room)}
 table.vs td.us{background:#fff;font-weight:600}
 table.vs tbody th{font-weight:600;width:22%}
 .yes{color:var(--room)} .no{color:#9a5b3c}
+/* Mobil: Wisch-Hinweis, fixe erste Spalte, Verlauf rechts */
+.vs-box{position:relative}
+.swipe{display:none;align-items:center;gap:10px;font:600 13px/1 var(--sans);color:var(--room);margin:0 0 12px;transition:opacity .4s}
+.swipe .arr{display:inline-block;animation:nudge 1.4s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+.vs-dots{display:none;justify-content:center;gap:6px;margin-top:12px}
+.vs-dots i{width:6px;height:6px;border-radius:50%;background:var(--line);transition:background .3s,width .3s}
+.vs-dots i.on{background:var(--room);width:18px;border-radius:3px}
+@media (max-width:760px){
+  .swipe,.vs-dots{display:flex}
+  .vs-box.vs-end .swipe{opacity:.0}
+  .vs-box::after{content:"";position:absolute;top:1px;right:0;bottom:0;width:48px;pointer-events:none;background:linear-gradient(90deg,rgba(248,246,240,0),var(--linen));transition:opacity .3s}
+  .vs-box.vs-end::after{opacity:0}
+  table.vs{min-width:640px;font-size:14px}
+  table.vs th:first-child{position:sticky;left:0;z-index:1;background:var(--linen);width:96px;min-width:96px;box-shadow:1px 0 0 var(--line)}
+}
+@media (prefers-reduced-motion:reduce){ .swipe .arr{animation:none} }
 .test{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);margin-top:clamp(48px,6vw,80px);align-items:center}
 .quote{font-family:var(--serif);font-size:clamp(26px,3vw,40px);line-height:1.15}
 
@@ -725,6 +742,8 @@ table.vs tbody th{font-weight:600;width:22%}
       <h2><span class="eyebrow ey">Bett schräg stellen: Bücher, Keil oder Schrägbett?</span>Den Winkel kann man nachbauen. Das Bett darunter nicht.</h2>
       <p class="lead muted">Wir sagen es offen: Ein paar Bücher unter dem Kopfende ergeben auch eine Schräge. Der Unterschied zeigt sich nicht in der ersten Nacht, sondern in der dreihundertsten.</p>
     </div>
+    <div class="vs-box" id="vsBox">
+    <p class="swipe" aria-hidden="true">Nach rechts wischen für den ganzen Vergleich <span class="arr">→</span></p>
     <div class="table-wrap" tabindex="0" aria-label="Vergleichstabelle, seitlich scrollbar">
       <table class="vs">
         <thead><tr><th scope="col"></th><th scope="col">Bücher oder Klötze</th><th scope="col">Keilkissen</th><th scope="col" class="us">Adriano mit Gravitas®</th></tr></thead>
@@ -738,6 +757,8 @@ table.vs tbody th{font-weight:600;width:22%}
           <tr><th scope="row">Beratung</th><td>Allein ausprobieren</td><td>Allein ausprobieren</td><td class="us">Probe liegen und Beratung in deiner Nähe</td></tr>
         </tbody>
       </table>
+    </div>
+    <div class="vs-dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
     </div>
     <p class="small muted" style="margin-top:12px">¹ Villamil Morales et al. 2020 (IBELGA-Studie zu nächtlichem Reflux). Siehe auch Albarqouni et al. 2021.</p>
     <div class="test">
@@ -1457,6 +1478,19 @@ table.vs tbody th{font-weight:600;width:22%}
   /* ── Flexi-Link öffnet die passende FAQ ── */
   document.querySelectorAll('a[href="#faq-flexi"]').forEach(a => a.addEventListener("click", () => { $("faq-flexi").open = true; }));
 
+})();
+
+// Vergleichstabelle mobil: Hinweis ausblenden, Punkte mitführen
+(() => {
+  const box = document.getElementById("vsBox"); if (!box) return;
+  const w = box.querySelector(".table-wrap"), dots = box.querySelectorAll(".vs-dots i");
+  const upd = () => {
+    const max = w.scrollWidth - w.clientWidth, r = max > 0 ? w.scrollLeft / max : 1;
+    box.classList.toggle("vs-end", r > .96);
+    const k = Math.min(dots.length - 1, Math.round(r * (dots.length - 1)));
+    dots.forEach((d, i) => d.classList.toggle("on", i === k));
+  };
+  w.addEventListener("scroll", upd, {passive:true}); addEventListener("resize", upd); upd();
 })();
 </script>
 
