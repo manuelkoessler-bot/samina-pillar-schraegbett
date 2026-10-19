@@ -177,18 +177,6 @@ body{background:var(--linen);color:var(--ink);font-family:var(--sans);font-size:
 .dataline div:last-child{border-right:0}
 .dataline b{font-family:var(--serif);font-weight:400;font-size:clamp(40px,4.6vw,64px);line-height:1;color:var(--room);font-variant-numeric:tabular-nums}
 .dataline span{font-size:14px;color:var(--ink-2);line-height:1.4}
-.toc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.4fr);gap:clamp(24px,4vw,64px);margin-top:clamp(48px,6vw,80px);padding-top:clamp(28px,3vw,40px);border-top:1px solid var(--ink)}
-.toc-h{display:grid;gap:10px;align-content:start}
-.toc-t{font-family:var(--serif);font-size:clamp(26px,2.6vw,34px);line-height:1.12;margin:0;text-wrap:balance}
-.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:clamp(16px,2.4vw,36px);counter-reset:toc}
-.toc li{counter-increment:toc;border-bottom:1px solid var(--line)}
-.toc li a{display:grid;grid-template-columns:2.2em minmax(0,1fr) auto;align-items:baseline;gap:8px;padding:14px 0;text-decoration:none;font-size:15px;line-height:1.35;transition:color .2s}
-.toc li a::before{content:counter(toc,decimal-leading-zero);font-family:var(--serif);font-size:17px;color:var(--room)}
-.toc li a::after{content:"→";opacity:0;transform:translateX(-6px);transition:opacity .2s,transform .2s;color:var(--room)}
-.toc li a:hover,.toc li a:focus-visible{color:var(--room)}
-.toc li a:hover::after,.toc li a:focus-visible::after{opacity:1;transform:none}
-@media (max-width:900px){ .toc{grid-template-columns:minmax(0,1fr)} .toc ol{grid-template-columns:repeat(2,minmax(0,1fr))} }
-@media (max-width:520px){ .toc ol{grid-template-columns:minmax(0,1fr)} }
 
 /* ───────── Longevity: Vollbild + Green Fade von links (Style Guide) ───────── */
 .lonsec{position:relative;overflow:hidden;min-height:clamp(600px,56vw,800px);display:flex;align-items:center}
@@ -346,6 +334,21 @@ table.vs tbody th{font-weight:600;width:22%}
 .time li .yr{background:var(--linen);width:fit-content;padding-right:8px}
 .time li .dot{width:13px;height:13px;border-radius:50%;background:var(--room);box-shadow:0 0 0 6px var(--linen);margin-top:28px}
 .time .yr{font-family:var(--serif);font-size:clamp(26px,2.6vw,34px);line-height:1;color:var(--room)}
+
+/* ───────── Holzarten ───────── */
+.wood{display:grid;gap:14px;margin-top:6px}
+.wood-pv{position:relative;aspect-ratio:3/2;max-width:100%;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.5)}
+.wood-pv img{width:100%;height:100%;object-fit:cover;display:block}
+.wood-lbl{position:absolute;left:0;bottom:0;background:rgba(10,40,24,.78);color:#fff;padding:10px 16px;display:grid;gap:1px}
+.wood-lbl small{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--sprout)}
+.wood-lbl b{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.1}
+.wood-sw{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:8px}
+.wood-sw button{aspect-ratio:1;border:0;padding:0;cursor:pointer;background-size:cover;background-position:center;border-radius:50%;box-shadow:0 0 0 1px rgba(255,255,255,.35);transition:transform .2s,box-shadow .2s}
+.wood-sw button:hover{transform:scale(1.08)}
+.wood-sw button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--room),0 0 0 4px #fff}
+.wood-sw button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.wood-hint{color:rgba(255,255,255,.75)}
+@media (max-width:520px){ .wood-sw{grid-template-columns:repeat(5,minmax(0,1fr))} }
 
 /* ───────── Für wen ───────── */
 .fit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,48px)}
@@ -516,26 +519,6 @@ table.vs tbody th{font-weight:600;width:22%}
       <div><b>1989</b><span>Seit 1989 forscht<br>SAMINA zum Schlaf</span></div>
     </div>
     <p class="small muted" style="margin-top:14px">Werte für ein 2 m langes Bett.</p>
-    <nav class="toc" aria-labelledby="tocH">
-      <div class="toc-h">
-        <span class="eyebrow">Auf dieser Seite</span>
-        <p class="toc-t" id="tocH">Was dich hier erwartet.</p>
-        <p class="small muted">Tippe auf ein Thema und spring direkt dorthin.</p>
-      </div>
-      <ol>
-        <li><a href="#longevity">Longevity und Schlaf</a></li>
-        <li><a href="#pionier">Wie alles begann</a></li>
-        <li><a href="#was">Was ist ein Schrägbett?</a></li>
-        <li><a href="#labor">Wie viel Grad, wie viel cm?</a></li>
-        <li><a href="#buecher">Bücher, Keil oder Schrägbett?</a></li>
-        <li><a href="#flexi">Dein Bett schräg stellen</a></li>
-        <li><a href="#system">Mehr als schräg: das Schlafsystem</a></li>
-        <li><a href="#erdung">Körpererdung im Schlaf</a></li>
-        <li><a href="#forschung">Was die Studien zeigen</a></li>
-        <li><a href="#anfrage">Preis &amp; Probe liegen</a></li>
-        <li><a href="#faq">Häufige Fragen</a></li>
-      </ol>
-    </nav>
   </div>
 </section>
 
@@ -855,11 +838,27 @@ table.vs tbody th{font-weight:600;width:22%}
         <p class="muted">Der Preis hängt von Größe, Holzart und deinem Schlafsystem ab. Wir stellen ihn dir persönlich zusammen, in der Filiale oder bei einem Premium-Partner in deiner Nähe.</p>
         <dl class="specs">
           <div><dt>Neigung</dt><dd>0 · 3,5 · 5,5°, mit einem Handgriff</dd></div>
-          <div><dt>Holz</dt><dd>Eiche, Wildeiche, Zirbe · 10 Varianten</dd></div>
+          <div><dt>Holz</dt><dd>Eiche, Wildeiche, Zirbe und 7 geölte Eichen-Töne · 10 Varianten</dd></div>
           <div><dt>Bauweise</dt><dd>Massivholz, metallfrei, Gravitas®-Mechanik aus Buche</dd></div>
           <div><dt>Herkunft</dt><dd>Handgefertigt in den österreichischen Alpen</dd></div>
           <div><dt>Probe liegen</dt><dd>13 SAMINA Filialen in Deutschland, Österreich und der Schweiz und Premium-Partner</dd></div>
         </dl>
+        <div class="wood" id="wood">
+          <div class="wood-pv"><img id="woodImg" src="img/holz_eiche.webp" alt="Holzmuster Eiche für den Bettrahmen Adriano" width="600" height="400" loading="lazy"><span class="wood-lbl"><small id="woodG">Massivholz natur</small><b id="woodN">Eiche</b></span></div>
+          <div class="wood-sw" role="group" aria-label="Holzart wählen">
+            <button type="button" data-w="eiche" data-n="Eiche" data-g="Massivholz natur" aria-pressed="true" aria-label="Massivholz natur: Eiche" style="background-image:url(img/holz_eiche.webp)"></button>
+            <button type="button" data-w="wildeiche" data-n="Wildeiche" data-g="Massivholz natur" aria-pressed="false" aria-label="Massivholz natur: Wildeiche" style="background-image:url(img/holz_wildeiche.webp)"></button>
+            <button type="button" data-w="zirbe" data-n="Zirbe" data-g="Massivholz natur" aria-pressed="false" aria-label="Massivholz natur: Zirbe" style="background-image:url(img/holz_zirbe.webp)"></button>
+            <button type="button" data-w="weiss" data-n="Milk" data-g="Eiche geölt" aria-pressed="false" aria-label="Eiche geölt: Milk" style="background-image:url(img/holz_weiss.webp)"></button>
+            <button type="button" data-w="beige" data-n="Beige" data-g="Eiche geölt" aria-pressed="false" aria-label="Eiche geölt: Beige" style="background-image:url(img/holz_beige.webp)"></button>
+            <button type="button" data-w="alder" data-n="Alder" data-g="Eiche geölt" aria-pressed="false" aria-label="Eiche geölt: Alder" style="background-image:url(img/holz_alder.webp)"></button>
+            <button type="button" data-w="cherry" data-n="Cherry" data-g="Eiche geölt" aria-pressed="false" aria-label="Eiche geölt: Cherry" style="background-image:url(img/holz_cherry.webp)"></button>
+            <button type="button" data-w="tobacco" data-n="Tobacco" data-g="Eiche geölt" aria-pressed="false" aria-label="Eiche geölt: Tobacco" style="background-image:url(img/holz_tobacco.webp)"></button>
+            <button type="button" data-w="walnut" data-n="Walnut" data-g="Eiche geölt" aria-pressed="false" aria-label="Eiche geölt: Walnut" style="background-image:url(img/holz_walnut.webp)"></button>
+            <button type="button" data-w="dark" data-n="Dark" data-g="Eiche geölt" aria-pressed="false" aria-label="Eiche geölt: Dark" style="background-image:url(img/holz_dark.webp)"></button>
+          </div>
+          <p class="small wood-hint">Natur: Eiche, Wildeiche, Zirbe · Eiche geölt: Milk, Beige, Alder, Cherry, Tobacco, Walnut, Dark. Holzmuster zum Anfassen in der Filiale.</p>
+        </div>
         <div class="ctas"><a class="btn ghost" href="https://samina.com/adriano/" target="_blank" rel="noopener">Adriano im Shop ansehen</a></div>
       </div>
 
@@ -1387,6 +1386,14 @@ table.vs tbody th{font-weight:600;width:22%}
     const name = $("fName").value.trim().split(" ")[0];
     form.innerHTML = `<div class="ok"><span class="eyebrow">Anfrage erhalten</span><p class="yr">Danke, ${name.replace(/[<>&]/g,"")}.</p><p class="muted">${intent === "probe" ? "Wir melden uns mit dem nächsten Standort zum Probeliegen." : intent === "flexi" ? "Wir prüfen dein Maß und melden uns persönlich bei dir." : "Eine SAMINA Schlafberaterin meldet sich persönlich bei dir."}</p><p class="small muted">Prototyp: Es wurde nichts versendet.</p></div>`;
   });
+
+  /* ── Holzarten ── */
+  const wb = [...document.querySelectorAll("#wood .wood-sw button")];
+  wb.forEach(b => b.addEventListener("click", () => {
+    wb.forEach(x => x.setAttribute("aria-pressed", String(x===b)));
+    $("woodImg").src = `img/holz_${b.dataset.w}.webp`; $("woodImg").alt = `Holzmuster ${b.dataset.g} ${b.dataset.n} für den Bettrahmen Adriano`;
+    $("woodN").textContent = b.dataset.n; $("woodG").textContent = b.dataset.g;
+  }));
 
   /* ── Flexi-Link öffnet die passende FAQ ── */
   document.querySelectorAll('a[href="#faq-flexi"]').forEach(a => a.addEventListener("click", () => { $("faq-flexi").open = true; }));
