@@ -291,25 +291,13 @@ table.vs tbody th{font-weight:600;width:22%}
 .fx-img{margin:0;align-self:stretch;display:flex;align-items:center}
 .fx-img img{width:100%;height:auto;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 62%,transparent 100%)}
 .fx-text{display:grid;gap:20px;padding-block:clamp(56px,7vw,110px)}
-.fx-price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-top:1px solid rgba(0,0,0,.18);padding-top:16px}
-.fx-price b{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.4vw,44px);line-height:1}
 .fx-steps{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:fx}
 .fx-steps li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;align-items:baseline;counter-increment:fx}
 .fx-steps li::before{content:counter(fx);width:26px;height:26px;border-radius:50%;background:var(--room);color:#fff;font:700 13px/26px var(--sans);text-align:center}
-.fx-below{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:center;padding-block:clamp(48px,6vw,96px)}
-.fx-below figure{margin:0}
-.fx-below img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
-.fx-below figcaption{margin-top:10px}
-.fx-check{background:var(--linen);padding:clamp(24px,3vw,40px);display:grid;gap:16px;box-shadow:inset 3px 0 0 var(--room)}
-.fx-check ul{margin:0;padding:0;list-style:none;display:grid;gap:14px}
-.fx-check li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px}
-.fx-check li b{font:600 12px/1.6 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--room)}
 @media (max-width:900px){
   .fx-stage{grid-template-columns:minmax(0,1fr)}
   .fx-img{order:-1;padding-top:24px}
   .fx-text{padding-block:8px 40px}
-  .fx-below{grid-template-columns:minmax(0,1fr)}
-  .fx-check li{grid-template-columns:minmax(0,1fr);gap:2px}
 }
 .form .tabs.t3{grid-template-columns:repeat(3,minmax(0,1fr))}
 /* Dreiklang 1:1 aus Style Guide 2027 (.trio) */
@@ -394,6 +382,7 @@ table.vs tbody th{font-weight:600;width:22%}
 .faq summary::before{content:"";position:absolute;right:6px;top:50%;width:14px;height:2px;background:var(--room);transform:rotate(90deg);transition:transform .25s}
 .faq details[open] summary::before{transform:rotate(3.5deg)} .faq details[open] summary::after{transform:rotate(3.5deg)}
 .faq .a{padding:0 0 22px;color:var(--ink-2);max-width:64ch;display:grid;gap:10px}
+.faq .a ul{margin:0;padding-left:1.1em;display:grid;gap:8px}
 
 /* ───────── Schluss ───────── */
 .end{position:relative;overflow:hidden;min-height:clamp(620px,60vw,820px);display:flex;align-items:stretch;background:var(--room)}
@@ -703,34 +692,16 @@ table.vs tbody th{font-weight:600;width:22%}
   <div class="wrap fx-stage">
       <div class="fx-text">
         <h2><span class="eyebrow ey">Bestehendes Bett schräg stellen: SAMINA Flexi</span>Dein Bett bleibt. Die Schräge kommt dazu.</h2>
-        <p class="lead">Du liebst dein Bett oder hast es gerade erst gekauft? Dann behalte es. Der SAMINA Flexi Einlegerahmen bringt Gravitas® in deinen bestehenden Bettrahmen. Ohne neues Bett, ohne Umbau.</p>
+        <p class="lead">Du liebst deinen Bettrahmen oder hast ihn gerade erst gekauft? Dann behalte ihn. Der SAMINA Flexi Einlegerahmen bringt Gravitas® in deinen bestehenden Bettrahmen. Ohne neues Bett, ohne Umbau.</p>
         <ol class="fx-steps">
-          <li><span><b>Einlegen.</b> In deinen Bettrahmen mit Innenmaß 90 × 200 cm.</span></li>
+          <li><span><b>Einlegen.</b> In deinen Bettrahmen mit Innenmaß 90 × 200 cm. Für Einzel- und Doppelbetten: Im Doppelbett liegen einfach zwei Flexi nebeneinander.</span></li>
           <li><span><b>Einstellen.</b> Sanfte Ganzkörper-Neigung von 3,5° bis 5,5°.</span></li>
           <li><span><b>Schräg schlafen.</b> Die ganze Liegefläche, nicht nur das Kopfteil.</span></li>
         </ol>
-        <div class="fx-price"><b>unter 1.000 €</b><span class="small">Dein Einstieg ins Schrägschlafen mit Gravitas®</span></div>
         <div class="ctas"><a class="btn" href="#anfrage" data-intent="flexi">Flexi anfragen <span class="arr">→</span></a><a class="btn line" href="https://samina.com/flexi-einlegerahmen/" target="_blank" rel="noopener">Mehr zum Flexi</a></div>
+        <p class="small"><a href="#faq-flexi" class="fx-faq">Passt der Flexi in dein Bett? Vier Dinge vorab →</a></p>
       </div>
       <figure class="fx-img"><img src="img/flexi_rahmen.jpg" alt="SAMINA Flexi Einlegerahmen aus Buchenholz, mit dem ein bestehendes Bett zum Schrägbett wird" width="980" height="820" loading="lazy"></figure>
-  </div>
-  <div class="bg-stone">
-    <div class="wrap fx-below">
-      <figure>
-        <img src="img/flexi_bett.jpg" alt="Bestehendes Zirbenbett mit eingelegtem SAMINA Flexi: die ganze Liegefläche sanft geneigt" width="955" height="955" loading="lazy">
-        <figcaption class="small muted">Der Flexi im bestehenden Bettrahmen: Die ganze Liegefläche neigt sich.</figcaption>
-      </figure>
-      <div class="fx-check">
-        <h3>Passt der Flexi in dein Bett? Vier Dinge vorab.</h3>
-        <ul>
-          <li><b>Maß</b><span>Der Flexi passt in Bettrahmen mit einem Innenmaß von genau 90 × 200 cm. Bitte miss vorher nach.</span></li>
-          <li><b>Matratze</b><span>Er ist auf das SAMINA Schlafsystem ausgelegt. Mit anderen Matratzen lässt er sich kombinieren, dafür können wir aber keine Gewähr übernehmen.</span></li>
-          <li><b>Einlegen</b><span>Wie du den Flexi einlegst und einstellst, zeigen wir dir gern. Frag uns einfach.</span></li>
-          <li><b>Ganz SAMINA</b><span>Das volle Gravitas®-Erlebnis mit Bettrahmen Adriano und Schlafsystem kannst du in der Filiale probeliegen.</span></li>
-        </ul>
-        <div class="ctas"><a class="btn line" href="#anfrage" data-intent="flexi">Maß prüfen lassen <span class="arr">→</span></a></div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -772,7 +743,7 @@ table.vs tbody th{font-weight:600;width:22%}
       <article>
         <span class="eyebrow">Weg 2</span>
         <h3>Dein Bett mit Flexi</h3>
-        <p class="muted">Dein Rahmen bleibt, der Flexi Einlegerahmen kommt hinein. Ideal mit dem SAMINA Schlafsystem darauf. Passt bei einem Innenmaß von 90 × 200 cm.</p>
+        <p class="muted">Dein Rahmen bleibt, der Flexi Einlegerahmen kommt hinein. Ideal mit dem SAMINA Schlafsystem darauf. Passt bei einem Innenmaß von 90 × 200 cm, im Doppelbett mit zwei Flexi.</p>
         <p class="small muted">Neigung: 3,5° bis 5,5°</p>
         <a class="btn line" href="#anfrage" data-intent="flexi">Flexi anfragen <span class="arr">→</span></a>
       </article>
@@ -916,7 +887,7 @@ table.vs tbody th{font-weight:600;width:22%}
             <label><input type="radio" name="neigung" id="fN0" value="weiß noch nicht" checked>Weiß ich noch nicht</label>
           </div>
         </div>
-        <div class="fld" id="fMassF" hidden><label for="fMass">Innenmaß deines Bettrahmens</label><select id="fMass" name="innenmass"><option>Genau 90 × 200 cm</option><option>Anderes Maß</option><option>Weiß ich nicht, bitte beraten</option></select></div>
+        <div class="fld" id="fMassF" hidden><label for="fMass">Innenmaß deines Bettrahmens</label><select id="fMass" name="innenmass"><option>Einzelbett, genau 90 × 200 cm</option><option>Doppelbett, genau 180 × 200 cm (2 Flexi)</option><option>Anderes Maß</option><option>Weiß ich nicht, bitte beraten</option></select></div>
         <input type="hidden" name="quelle" value="pillar-schraegbett">
         <label class="consent"><input type="checkbox" id="fOk" required><span>Ich bin einverstanden, dass SAMINA mich zu meiner Anfrage kontaktiert. Hinweise in der Datenschutzerklärung.</span></label>
         <p class="err" id="fErr" role="alert"></p>
@@ -946,7 +917,8 @@ table.vs tbody th{font-weight:600;width:22%}
         <details><summary>Schräg schlafen: Vorteile und Nachteile?</summary><div class="a"><p>Viele, die schräg schlafen, mögen das Liegegefühl so sehr, dass sie nicht mehr flach schlafen wollen. Am Anfang kann sich die Neigung ungewohnt anfühlen, deshalb gibt es die Einstiegsstufe 3,5° und jederzeit den Weg zurück auf 0°. Für Säuglinge unter 12 Monaten ist eine Schräglage nicht geeignet. Bei Venenleiden oder sehr niedrigem Blutdruck vorher ärztlich abklären.</p></div></details>
         <details><summary>Was kostet ein Schrägbett von SAMINA?</summary><div class="a"><p>Der Adriano ist derzeit auf Anfrage erhältlich. Der Preis hängt von Größe, Holzart und Schlafsystem ab. Stell einfach eine Produktanfrage, wir melden uns persönlich.</p></div></details>
         <details><summary>Wo kann ich ein Schrägbett kaufen und Probe liegen?</summary><div class="a"><p>In den SAMINA Filialen in Deutschland, Österreich und der Schweiz und bei unseren Premium-Partnern. Gib im Formular deine PLZ an, wir nennen dir den nächsten Standort.</p></div></details>
-        <details><summary>Kann ich mein bestehendes Bett zum Schrägbett machen?</summary><div class="a"><p>Ja, mit dem SAMINA Flexi Einlegerahmen. Du legst ihn in deinen bestehenden Bettrahmen ein, und die ganze Liegefläche neigt sich sanft auf 3,5° bis 5,5°. Er passt in Rahmen mit einem Innenmaß von genau 90 × 200 cm und ist auf das SAMINA Schlafsystem ausgelegt. Mit anderen Matratzen ist er kombinierbar, allerdings ohne Gewähr.</p></div></details>
+        <details><summary>Kann ich mein bestehendes Bett zum Schrägbett machen?</summary><div class="a"><p>Ja, mit dem SAMINA Flexi Einlegerahmen, im Einzel- wie im Doppelbett. Du legst ihn in deinen bestehenden Bettrahmen ein, und die ganze Liegefläche neigt sich sanft auf 3,5° bis 5,5°. Ohne neues Bett und ohne Umbau.</p></div></details>
+        <details id="faq-flexi"><summary>Passt der Flexi in mein Bett?</summary><div class="a"><p>Vier Dinge vorab:</p><ul><li><b>Maß:</b> Der Flexi passt in Bettrahmen mit einem Innenmaß von genau 90 × 200 cm. Für ein Doppelbett mit 180 × 200 cm nimmst du zwei. Bitte miss vorher nach.</li><li><b>Matratze:</b> Er ist auf das SAMINA Schlafsystem ausgelegt. Mit anderen Matratzen lässt er sich kombinieren, dafür können wir aber keine Gewähr übernehmen.</li><li><b>Einlegen:</b> Wie du den Flexi einlegst und einstellst, zeigen wir dir gern. Frag uns einfach.</li><li><b>Ganz SAMINA:</b> Das volle Gravitas®-Erlebnis mit Bettrahmen Adriano und Schlafsystem kannst du in der Filiale probeliegen.</li></ul></div></details>
         <details><summary>Kann ich meinen Lattenrost schräg stellen?</summary><div class="a"><p>Ein verstellbarer Lattenrost hebt meist nur das Kopfteil an. Das wirkt wie ein Keil, der Oberkörper knickt ab. Für eine gleichmäßige Schräglage muss sich die ganze Liegefläche neigen, wie beim Rahmen Adriano mit Gravitas® oder mit dem Flexi Einlegerahmen.</p></div></details>
         <details><summary>Was hat Schlaf mit Longevity zu tun?</summary><div class="a"><p>Im Schlaf regeneriert dein Körper. Wer langfristig gesund und leistungsfähig bleiben will, kommt deshalb am Schlaf nicht vorbei. Bei SAMINA sind Neigung, Körpererdung und Naturmaterialien deshalb ein abgestimmtes System für deinen regenerativen Schlaf.</p></div></details>
         <details><summary>Was bedeutet Gravitas®?</summary><div class="a"><p>Gravitas ist Latein und heißt Schwere. Gesprochen wie geschrieben, nicht „Gravity“. Der Name steht für die Schrägschlaftechnik von SAMINA, die die Schwerkraft mit einer genau definierten Neigung nutzt.</p></div></details>
@@ -1139,7 +1111,15 @@ table.vs tbody th{font-weight:600;width:22%}
      "name": "Kann ich mein bestehendes Bett zum Schrägbett machen?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Ja, mit dem SAMINA Flexi Einlegerahmen. Du legst ihn in deinen bestehenden Bettrahmen ein, und die ganze Liegefläche neigt sich sanft auf 3,5° bis 5,5°. Er passt in Rahmen mit einem Innenmaß von genau 90 × 200 cm und ist auf das SAMINA Schlafsystem ausgelegt. Mit anderen Matratzen ist er kombinierbar, allerdings ohne Gewähr."
+      "text": "Ja, mit dem SAMINA Flexi Einlegerahmen, im Einzel- wie im Doppelbett. Du legst ihn in deinen bestehenden Bettrahmen ein, und die ganze Liegefläche neigt sich sanft auf 3,5° bis 5,5°. Ohne neues Bett und ohne Umbau."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Passt der Flexi in mein Bett?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Vier Dinge vorab: Der Flexi passt in Bettrahmen mit einem Innenmaß von genau 90 × 200 cm, für ein Doppelbett mit 180 × 200 cm nimmst du zwei. Bitte miss vorher nach. Er ist auf das SAMINA Schlafsystem ausgelegt; mit anderen Matratzen lässt er sich kombinieren, dafür können wir aber keine Gewähr übernehmen. Wie du den Flexi einlegst und einstellst, zeigen wir dir gern. Das volle Gravitas®-Erlebnis mit Bettrahmen Adriano und Schlafsystem kannst du in der Filiale probeliegen."
      }
     },
     {
@@ -1397,6 +1377,9 @@ table.vs tbody th{font-weight:600;width:22%}
     const name = $("fName").value.trim().split(" ")[0];
     form.innerHTML = `<div class="ok"><span class="eyebrow">Anfrage erhalten</span><p class="yr">Danke, ${name.replace(/[<>&]/g,"")}.</p><p class="muted">${intent === "probe" ? "Wir melden uns mit dem nächsten Standort zum Probeliegen." : intent === "flexi" ? "Wir prüfen dein Maß und melden uns persönlich bei dir." : "Eine SAMINA Schlafberaterin meldet sich persönlich bei dir."}</p><p class="small muted">Prototyp: Es wurde nichts versendet.</p></div>`;
   });
+
+  /* ── Flexi-Link öffnet die passende FAQ ── */
+  document.querySelectorAll('a[href="#faq-flexi"]').forEach(a => a.addEventListener("click", () => { $("faq-flexi").open = true; }));
 
 })();
 </script>
