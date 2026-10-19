@@ -177,9 +177,18 @@ body{background:var(--linen);color:var(--ink);font-family:var(--sans);font-size:
 .dataline div:last-child{border-right:0}
 .dataline b{font-family:var(--serif);font-weight:400;font-size:clamp(40px,4.6vw,64px);line-height:1;color:var(--room);font-variant-numeric:tabular-nums}
 .dataline span{font-size:14px;color:var(--ink-2);line-height:1.4}
-.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
-.toc a{font-size:14px;text-decoration:none;border:1px solid var(--line);padding:8px 13px;border-radius:2px;transition:border-color .2s,background .2s}
-.toc a:hover{border-color:var(--room);background:#fff}
+.toc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.4fr);gap:clamp(24px,4vw,64px);margin-top:clamp(48px,6vw,80px);padding-top:clamp(28px,3vw,40px);border-top:1px solid var(--ink)}
+.toc-h{display:grid;gap:10px;align-content:start}
+.toc-t{font-family:var(--serif);font-size:clamp(26px,2.6vw,34px);line-height:1.12;margin:0;text-wrap:balance}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:clamp(16px,2.4vw,36px);counter-reset:toc}
+.toc li{counter-increment:toc;border-bottom:1px solid var(--line)}
+.toc li a{display:grid;grid-template-columns:2.2em minmax(0,1fr) auto;align-items:baseline;gap:8px;padding:14px 0;text-decoration:none;font-size:15px;line-height:1.35;transition:color .2s}
+.toc li a::before{content:counter(toc,decimal-leading-zero);font-family:var(--serif);font-size:17px;color:var(--room)}
+.toc li a::after{content:"→";opacity:0;transform:translateX(-6px);transition:opacity .2s,transform .2s;color:var(--room)}
+.toc li a:hover,.toc li a:focus-visible{color:var(--room)}
+.toc li a:hover::after,.toc li a:focus-visible::after{opacity:1;transform:none}
+@media (max-width:900px){ .toc{grid-template-columns:minmax(0,1fr)} .toc ol{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:520px){ .toc ol{grid-template-columns:minmax(0,1fr)} }
 
 /* ───────── Longevity: Vollbild + Green Fade von links (Style Guide) ───────── */
 .lonsec{position:relative;overflow:hidden;min-height:clamp(600px,56vw,800px);display:flex;align-items:center}
@@ -319,7 +328,7 @@ table.vs tbody th{font-weight:600;width:22%}
 .badge{display:inline-block;border:1px solid rgba(255,255,255,.55);padding:7px 11px;font-size:13px;letter-spacing:.02em;width:fit-content}
 
 /* ───────── Forschung ───────── */
-.evi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+.evi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
 .evi article{background:#fff;padding:clamp(22px,2.6vw,32px);display:grid;gap:12px;align-content:start;border-top:3px solid var(--c)}
 .evi .lvl{font:700 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--c);display:flex;align-items:center;gap:8px}
 .evi .lvl i{width:10px;height:10px;border-radius:50%;background:var(--c);display:inline-block}
@@ -327,8 +336,6 @@ table.vs tbody th{font-weight:600;width:22%}
 .why{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);margin-top:clamp(56px,7vw,96px);align-items:center}
 .why figure{margin:0;aspect-ratio:5/4;overflow:hidden}
 .why figure img{width:100%;height:100%;object-fit:cover;object-position:35% 30%}
-.curve{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 14px;align-items:center;font-size:14px;font-variant-numeric:tabular-nums}
-.curve .bar{height:8px;background:var(--stone)} .curve .bar span{display:block;height:100%;background:var(--room)}
 
 /* ───────── Zeitachse auf 3,5° ───────── */
 .time{position:relative;margin-top:24px}
@@ -353,6 +360,7 @@ table.vs tbody th{font-weight:600;width:22%}
 .specs div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;padding:13px 0;border-bottom:1px solid var(--line-inv);font-size:15px}
 .specs dt{color:var(--sprout);font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding-top:2px}
 .specs dd{margin:0}
+.form .muted{color:var(--ink-2)}
 .form{background:var(--linen);color:var(--ink);padding:clamp(22px,3vw,40px);display:grid;gap:18px;box-shadow:0 40px 80px -40px rgba(0,0,0,.5)}
 .form .tabs{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);padding:3px;gap:3px}
 .form .tabs button{font:600 14px/1.25 var(--sans);background:none;border:0;padding:12px 8px;cursor:pointer;color:var(--ink)}
@@ -508,8 +516,26 @@ table.vs tbody th{font-weight:600;width:22%}
       <div><b>1989</b><span>Seit 1989 forscht<br>SAMINA zum Schlaf</span></div>
     </div>
     <p class="small muted" style="margin-top:14px">Werte für ein 2 m langes Bett.</p>
-    <nav class="toc" aria-label="Auf dieser Seite">
-      <a href="#longevity">Longevity und Schlaf</a><a href="#pionier">Wie alles begann</a><a href="#was">Was ist ein Schrägbett?</a><a href="#labor">Wie viel Grad, wie viel cm?</a><a href="#buecher">Bücher, Keil oder Schrägbett?</a><a href="#flexi">Dein Bett schräg stellen</a><a href="#system">Mehr als schräg</a><a href="#forschung">Was die Forschung sagt</a><a href="#anfrage">Preis &amp; Probe liegen</a><a href="#faq">Fragen</a>
+    <nav class="toc" aria-labelledby="tocH">
+      <div class="toc-h">
+        <span class="eyebrow">Auf dieser Seite</span>
+        <p class="toc-t" id="tocH">Was dich hier erwartet.</p>
+        <p class="small muted">Tippe auf ein Thema und spring direkt dorthin.</p>
+      </div>
+      <ol>
+        <li><a href="#longevity">Longevity und Schlaf</a></li>
+        <li><a href="#pionier">Wie alles begann</a></li>
+        <li><a href="#was">Was ist ein Schrägbett?</a></li>
+        <li><a href="#labor">Wie viel Grad, wie viel cm?</a></li>
+        <li><a href="#buecher">Bücher, Keil oder Schrägbett?</a></li>
+        <li><a href="#flexi">Dein Bett schräg stellen</a></li>
+        <li><a href="#system">Mehr als schräg: das Schlafsystem</a></li>
+        <li><a href="#erdung">Körpererdung im Schlaf</a></li>
+        <li><a href="#forschung">Was die Studien zeigen</a></li>
+        <li><a href="#fuerwen">Für wen ist ein Schrägbett?</a></li>
+        <li><a href="#anfrage">Preis &amp; Probe liegen</a></li>
+        <li><a href="#faq">Häufige Fragen</a></li>
+      </ol>
     </nav>
   </div>
 </section>
@@ -791,8 +817,8 @@ table.vs tbody th{font-weight:600;width:22%}
 <section class="sec bg-linen" id="forschung">
   <div class="wrap">
     <div class="head">
-      <h2><span class="eyebrow ey">Schräg schlafen: Was sagt die Forschung?</span>Was belegt ist. Und was nicht.</h2>
-      <p class="lead muted">Wir zeigen dir den Stand der Studien so, wie er ist. Ein Schrägbett ersetzt keinen Arztbesuch und ist kein Medizinprodukt.</p>
+      <h2><span class="eyebrow ey">Schräg schlafen: Was sagt die Forschung?</span>Was die Studien zeigen.</h2>
+      <p class="lead muted">Wir zeigen dir den Stand der Studien, ohne Versprechen. Ein Schrägbett ersetzt keinen Arztbesuch und ist kein Medizinprodukt.</p>
     </div>
     <div class="evi">
       <article style="--c:var(--room)">
@@ -807,26 +833,14 @@ table.vs tbody th{font-weight:600;width:22%}
         <p class="muted small">Kleine Studien haben untersucht, wie sich eine Ganzkörperneigung auf die Atmung im Schlaf auswirkt. In einer davon lag ein 15-cm-Klotz unter dem Kopfende, das entspricht etwa 4°.</p>
         <p class="src">Souza et al. 2017, Sleep and Breathing · Iannella 2022 · Owen 2024. Keine Aussage zur Wirkung des Adriano.</p>
       </article>
-      <article style="--c:#9a5b3c">
-        <span class="lvl"><i></i>Nicht belegt</span>
-        <h3>Durchblutung, Lymphe, Entgiftung</h3>
-        <p class="muted small">Dazu gibt es keine belastbaren Studien am Menschen. Deshalb versprechen wir es auch nicht.</p>
-        <p class="src">Stand der Recherche: Oktober 2026</p>
-      </article>
     </div>
     <div class="why">
       <figure><img src="img/wiss_forscher_hoch.webp" alt="Schlafforscher im weißen Hemd mit Unterlagen" loading="lazy" style="object-position:38% 10%"></figure>
       <div style="display:grid;gap:20px">
         <p class="eyebrow">Prof. Dr. med. h.c. Günther W. Amann-Jennson · Warum 3,5° und 5,5°?</p>
-        <h3 style="font-size:clamp(28px,3vw,40px)">Sanft genug, um dabeizubleiben.</h3>
+        <h3 style="font-size:clamp(28px,3vw,40px)">Sanft geneigt. Natürlich im Gefühl.</h3>
         <p class="muted">Seit rund 20 Jahren forscht Prof. Dr. med. h.c. Günther W. Amann-Jennson zur Ganzkörper-Schräglage, lange im Austausch mit dem Berliner Schlafforscher Prof. Karl Hecht. Sein Fazit: Der Winkel allein reicht nicht. Entscheidend ist, was in der Schräglage trägt, entlastet und wärmt.</p>
-        <p class="muted">In einer Studie zu Schräglagen hielten alle Teilnehmenden 6° durch. Bei steileren Winkeln gaben immer mehr auf. Deshalb beginnen die meisten mit 3,5° und wechseln später auf 5,5°.</p>
-        <div class="curve" role="img" aria-label="Anteil, der die Neigung durchhält: 6 Grad 100 Prozent, 12 Grad 80 Prozent, 18 Grad 60 Prozent">
-          <span>6°</span><span class="bar"><span style="width:100%"></span></span><span>100 %</span>
-          <span>12°</span><span class="bar"><span style="width:80%"></span></span><span>80 %</span>
-          <span>18°</span><span class="bar"><span style="width:60%"></span></span><span>60 %</span>
-        </div>
-        <p class="small muted">Durchhaltequote je Neigung, Heads-Up-Studie.</p>
+        <p class="muted">Die Neigung ist bewusst sanft gewählt. Die meisten beginnen mit 3,5° und wechseln auf 5,5°, wenn es sich für sie gut anfühlt. Zurück auf flach geht jederzeit.</p>
       </div>
     </div>
   </div>
@@ -880,13 +894,6 @@ table.vs tbody th{font-weight:600;width:22%}
           <div class="fld"><label for="fPlz">PLZ</label><input id="fPlz" name="plz" inputmode="numeric" autocomplete="postal-code" required></div>
           <div class="fld"><label for="fLand">Land</label><select id="fLand" name="land"><option>Deutschland</option><option>Österreich</option><option>Schweiz</option><option>Liechtenstein</option></select></div>
         </div>
-        <div class="fld"><span style="font-size:13px;font-weight:600">Welche Neigung interessiert dich?</span>
-          <div class="chips">
-            <label><input type="radio" name="neigung" id="fN35" value="3,5°">3,5°</label>
-            <label><input type="radio" name="neigung" id="fN55" value="5,5°">5,5°</label>
-            <label><input type="radio" name="neigung" id="fN0" value="weiß noch nicht" checked>Weiß ich noch nicht</label>
-          </div>
-        </div>
         <div class="fld" id="fMassF" hidden><label for="fMass">Innenmaß deines Bettrahmens</label><select id="fMass" name="innenmass"><option>Einzelbett, genau 90 × 200 cm</option><option>Doppelbett, genau 180 × 200 cm (2 Flexi)</option><option>Anderes Maß</option><option>Weiß ich nicht, bitte beraten</option></select></div>
         <input type="hidden" name="quelle" value="pillar-schraegbett">
         <label class="consent"><input type="checkbox" id="fOk" required><span>Ich bin einverstanden, dass SAMINA mich zu meiner Anfrage kontaktiert. Hinweise in der Datenschutzerklärung.</span></label>
@@ -913,7 +920,7 @@ table.vs tbody th{font-weight:600;width:22%}
         <details><summary>Rutscht man im Schrägbett nach unten?</summary><div class="a"><p>Bei den sanften Winkeln von 3,5° und 5,5° merken die meisten davon nichts. Wie es sich für dich anfühlt, weißt du nach ein paar Minuten Probeliegen.</p></div></details>
         <details><summary>Kann ich mein Bett nicht einfach mit Büchern schräg stellen?</summary><div class="a"><p>Kannst du, und zum Ausprobieren ist das eine gute Idee. Auf Dauer wackelt und rutscht ein Stapel leicht, und der Winkel bleibt ungefähr. Der Adriano hält 3,5° oder 5,5° genau und ist auf Matratze und Schlafsystem abgestimmt.</p></div></details>
         <details><summary>Schrägbett, Bettkeil oder Oberkörper erhöht schlafen?</summary><div class="a"><p>Ein Keilkissen oder ein hochgestelltes Kopfteil hebt nur den Oberkörper an, in der Hüfte entsteht ein Knick. Ein Schrägbett neigt die ganze Liegefläche gleichmäßig, Rost und Matratze stützen die Wirbelsäule dabei wie im flachen Bett.</p></div></details>
-        <details><summary>Ist schräg schlafen gesund?</summary><div class="a"><p>Am besten untersucht ist nächtliches Sodbrennen: Fachgesellschaften empfehlen dabei, das Kopfende zu erhöhen. Für viele andere Versprechen, die man online liest, gibt es keine belastbaren Studien. Bei Beschwerden sprich bitte mit deinem Arzt.</p></div></details>
+        <details><summary>Ist schräg schlafen gesund?</summary><div class="a"><p>Am besten untersucht ist nächtliches Sodbrennen: Fachgesellschaften empfehlen dabei, das Kopfende zu erhöhen. Ein Schrägbett ist kein Medizinprodukt und ersetzt keinen Arztbesuch. Bei Beschwerden sprich bitte mit deinem Arzt.</p></div></details>
         <details><summary>Schräg schlafen: Vorteile und Nachteile?</summary><div class="a"><p>Viele, die schräg schlafen, mögen das Liegegefühl so sehr, dass sie nicht mehr flach schlafen wollen. Am Anfang kann sich die Neigung ungewohnt anfühlen, deshalb gibt es die Einstiegsstufe 3,5° und jederzeit den Weg zurück auf 0°. Für Säuglinge unter 12 Monaten ist eine Schräglage nicht geeignet. Bei Venenleiden oder sehr niedrigem Blutdruck vorher ärztlich abklären.</p></div></details>
         <details><summary>Was kostet ein Schrägbett von SAMINA?</summary><div class="a"><p>Der Adriano ist derzeit auf Anfrage erhältlich. Der Preis hängt von Größe, Holzart und Schlafsystem ab. Stell einfach eine Produktanfrage, wir melden uns persönlich.</p></div></details>
         <details><summary>Wo kann ich ein Schrägbett kaufen und Probe liegen?</summary><div class="a"><p>In den SAMINA Filialen in Deutschland, Österreich und der Schweiz und bei unseren Premium-Partnern. Gib im Formular deine PLZ an, wir nennen dir den nächsten Standort.</p></div></details>
@@ -1079,7 +1086,7 @@ table.vs tbody th{font-weight:600;width:22%}
      "name": "Ist schräg schlafen gesund?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Am besten untersucht ist nächtliches Sodbrennen: Fachgesellschaften empfehlen dabei, das Kopfende zu erhöhen. Für viele andere Versprechen, die man online liest, gibt es keine belastbaren Studien. Bei Beschwerden sprich bitte mit deinem Arzt."
+      "text": "Am besten untersucht ist nächtliches Sodbrennen: Fachgesellschaften empfehlen dabei, das Kopfende zu erhöhen. Ein Schrägbett ist kein Medizinprodukt und ersetzt keinen Arztbesuch. Bei Beschwerden sprich bitte mit deinem Arzt."
      }
     },
     {
