@@ -279,11 +279,39 @@ table.vs tbody th{font-weight:600;width:22%}
 .layers li.opt b em{font-style:normal;font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--room);margin-left:8px;white-space:nowrap}
 .explode .hs.opt{background:#fff;color:var(--room);box-shadow:0 0 0 2px var(--room)}
 .explode .hs.opt[aria-pressed="true"]{background:var(--room);color:#fff}
-.ways{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,28px);margin-top:clamp(48px,6vw,80px)}
+.ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,28px);margin-top:clamp(48px,6vw,80px)}
 .ways article{background:var(--linen);padding:clamp(24px,3vw,40px);display:grid;gap:12px;align-content:start}
 .ways article.rec{background:#fff;box-shadow:inset 0 -3px 0 var(--room)}
 .ways .btn{width:fit-content;margin-top:6px}
-@media (max-width:620px){ .ways{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:900px){ .ways{grid-template-columns:minmax(0,1fr)} }
+
+/* ───────── Flexi: bestehendes Bett schräg stellen ───────── */
+.flexi{background:#CFCECC}
+.fx-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:center}
+.fx-img{margin:0;align-self:stretch;display:flex;align-items:center}
+.fx-img img{width:100%;height:auto;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 62%,transparent 100%)}
+.fx-text{display:grid;gap:20px;padding-block:clamp(56px,7vw,110px)}
+.fx-price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-top:1px solid rgba(0,0,0,.18);padding-top:16px}
+.fx-price b{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.4vw,44px);line-height:1}
+.fx-steps{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:fx}
+.fx-steps li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;align-items:baseline;counter-increment:fx}
+.fx-steps li::before{content:counter(fx);width:26px;height:26px;border-radius:50%;background:var(--room);color:#fff;font:700 13px/26px var(--sans);text-align:center}
+.fx-below{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:center;padding-block:clamp(48px,6vw,96px)}
+.fx-below figure{margin:0}
+.fx-below img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+.fx-below figcaption{margin-top:10px}
+.fx-check{background:var(--linen);padding:clamp(24px,3vw,40px);display:grid;gap:16px;box-shadow:inset 3px 0 0 var(--room)}
+.fx-check ul{margin:0;padding:0;list-style:none;display:grid;gap:14px}
+.fx-check li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px}
+.fx-check li b{font:600 12px/1.6 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--room)}
+@media (max-width:900px){
+  .fx-stage{grid-template-columns:minmax(0,1fr)}
+  .fx-img{order:-1;padding-top:24px}
+  .fx-text{padding-block:8px 40px}
+  .fx-below{grid-template-columns:minmax(0,1fr)}
+  .fx-check li{grid-template-columns:minmax(0,1fr);gap:2px}
+}
+.form .tabs.t3{grid-template-columns:repeat(3,minmax(0,1fr))}
 /* Dreiklang 1:1 aus Style Guide 2027 (.trio) */
 .trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:2px;margin-top:clamp(56px,7vw,96px)}
 .trio article{position:relative;min-height:540px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;color:#fff;isolation:isolate}
@@ -492,7 +520,7 @@ table.vs tbody th{font-weight:600;width:22%}
     </div>
     <p class="small muted" style="margin-top:14px">Werte für ein 2 m langes Bett.</p>
     <nav class="toc" aria-label="Auf dieser Seite">
-      <a href="#longevity">Longevity und Schlaf</a><a href="#pionier">Wie alles begann</a><a href="#was">Was ist ein Schrägbett?</a><a href="#labor">Wie viel Grad, wie viel cm?</a><a href="#buecher">Bücher, Keil oder Schrägbett?</a><a href="#system">Mehr als schräg</a><a href="#forschung">Was die Forschung sagt</a><a href="#anfrage">Preis &amp; Probe liegen</a><a href="#faq">Fragen</a>
+      <a href="#longevity">Longevity und Schlaf</a><a href="#pionier">Wie alles begann</a><a href="#was">Was ist ein Schrägbett?</a><a href="#labor">Wie viel Grad, wie viel cm?</a><a href="#buecher">Bücher, Keil oder Schrägbett?</a><a href="#flexi">Dein Bett schräg stellen</a><a href="#system">Mehr als schräg</a><a href="#forschung">Was die Forschung sagt</a><a href="#anfrage">Preis &amp; Probe liegen</a><a href="#faq">Fragen</a>
     </nav>
   </div>
 </section>
@@ -664,6 +692,43 @@ table.vs tbody th{font-weight:600;width:22%}
       <div style="display:grid;gap:18px">
         <p class="muted">Das ist unser Bücher-Test. Wer schräg schlafen ausprobiert, merkt schnell, ob es zu ihm passt. Und dann, warum es auf mehr ankommt als auf den Winkel.</p>
         <div class="ctas"><a class="btn" href="#anfrage" data-intent="probe">Probe liegen in deiner Nähe <span class="arr">→</span></a></div>
+        <p class="small muted">Du willst dein Bett behalten und trotzdem richtig schräg schlafen? <a href="#flexi">Dafür gibt es den SAMINA Flexi.</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 5b · FLEXI: BESTEHENDES BETT SCHRÄG STELLEN ═════════ -->
+<section class="flexi" id="flexi">
+  <div class="wrap fx-stage">
+      <div class="fx-text">
+        <h2><span class="eyebrow ey">Bestehendes Bett schräg stellen: SAMINA Flexi</span>Dein Bett bleibt. Die Schräge kommt dazu.</h2>
+        <p class="lead">Du liebst dein Bett oder hast es gerade erst gekauft? Dann behalte es. Der SAMINA Flexi Einlegerahmen bringt Gravitas® in deinen bestehenden Bettrahmen. Ohne neues Bett, ohne Umbau.</p>
+        <ol class="fx-steps">
+          <li><span><b>Einlegen.</b> In deinen Bettrahmen mit Innenmaß 90 × 200 cm.</span></li>
+          <li><span><b>Einstellen.</b> Sanfte Ganzkörper-Neigung von 3,5° bis 5,5°.</span></li>
+          <li><span><b>Schräg schlafen.</b> Die ganze Liegefläche, nicht nur das Kopfteil.</span></li>
+        </ol>
+        <div class="fx-price"><b>unter 1.000 €</b><span class="small">Dein Einstieg ins Schrägschlafen mit Gravitas®</span></div>
+        <div class="ctas"><a class="btn" href="#anfrage" data-intent="flexi">Flexi anfragen <span class="arr">→</span></a><a class="btn line" href="https://samina.com/flexi-einlegerahmen/" target="_blank" rel="noopener">Mehr zum Flexi</a></div>
+      </div>
+      <figure class="fx-img"><img src="img/flexi_rahmen.jpg" alt="SAMINA Flexi Einlegerahmen aus Buchenholz, mit dem ein bestehendes Bett zum Schrägbett wird" width="980" height="820" loading="lazy"></figure>
+  </div>
+  <div class="bg-stone">
+    <div class="wrap fx-below">
+      <figure>
+        <img src="img/flexi_bett.jpg" alt="Bestehendes Zirbenbett mit eingelegtem SAMINA Flexi: die ganze Liegefläche sanft geneigt" width="955" height="955" loading="lazy">
+        <figcaption class="small muted">Der Flexi im bestehenden Bettrahmen: Die ganze Liegefläche neigt sich.</figcaption>
+      </figure>
+      <div class="fx-check">
+        <h3>Passt der Flexi in dein Bett? Vier Dinge vorab.</h3>
+        <ul>
+          <li><b>Maß</b><span>Der Flexi passt in Bettrahmen mit einem Innenmaß von genau 90 × 200 cm. Bitte miss vorher nach.</span></li>
+          <li><b>Matratze</b><span>Er ist auf das SAMINA Schlafsystem ausgelegt. Mit anderen Matratzen lässt er sich kombinieren, dafür können wir aber keine Gewähr übernehmen.</span></li>
+          <li><b>Einlegen</b><span>Wie du den Flexi einlegst und einstellst, zeigen wir dir gern. Frag uns einfach.</span></li>
+          <li><b>Ganz SAMINA</b><span>Das volle Gravitas®-Erlebnis mit Bettrahmen Adriano und Schlafsystem kannst du in der Filiale probeliegen.</span></li>
+        </ul>
+        <div class="ctas"><a class="btn line" href="#anfrage" data-intent="flexi">Maß prüfen lassen <span class="arr">→</span></a></div>
       </div>
     </div>
   </div>
@@ -674,7 +739,7 @@ table.vs tbody th{font-weight:600;width:22%}
   <div class="wrap">
     <div class="head">
       <h2><span class="eyebrow ey">Schrägbett mit Schlafsystem</span>Ein Schrägbett ist nur so gut wie das, was darauf liegt.</h2>
-      <p class="lead muted">Das SAMINA Schlafsystem besteht aus fünf Schichten aus Naturmaterialien und passt in nahezu jeden Bettrahmen. Schräg schläfst du, wenn du es mit dem Bettrahmen Adriano kombinierst: Er ist optional, bringt aber die Gravitas®-Schrägschlaftechnik mit.</p>
+      <p class="lead muted">Das SAMINA Schlafsystem besteht aus fünf Schichten aus Naturmaterialien und passt in nahezu jeden Bettrahmen. Schräg schläfst du mit Gravitas®: im Bettrahmen Adriano oder mit dem Flexi Einlegerahmen in deinem eigenen Bett.</p>
     </div>
     <div class="sys">
       <div class="explode" id="explode">
@@ -693,7 +758,7 @@ table.vs tbody th{font-weight:600;width:22%}
           <li class="on"><button type="button"><span class="n">3</span><b>Lokosana Körpererdung</b><span class="d">Von SAMINA entwickelte Erdungsauflage mit Silber-Baumwoll-Gewebe. Wirkt kapazitiv durch die Wollschicht hindurch, ohne direkten Hautkontakt.</span></button></li>
           <li><button type="button"><span class="n">4</span><b>Naturkautschukmatratze</b><span class="d">Vita Talalay, punktelastisch und ohne Metallfedern. Passt sich deinem Körper an und folgt der Neigung mit.</span></button></li>
           <li><button type="button"><span class="n">5</span><b>Freischwingender Lamellenrost</b><span class="d">Jede Lamelle schwingt einzeln mit. Der Rost unterstützt die orthopädisch richtige Lagerung deiner Wirbelsäule, flach genauso wie in der Schräglage.</span></button></li>
-          <li class="opt"><button type="button"><span class="n">+</span><b>Bettrahmen Adriano mit Gravitas® <em>optional, empfohlen</em></b><span class="d">Massivholz, metallfrei, handgefertigt. Mit ihm kommt die Neigung ins System: 0, 3,5 oder 5,5° mit einem Handgriff. Ohne Adriano liegt das Schlafsystem flach in deinem bestehenden Rahmen.</span></button></li>
+          <li class="opt"><button type="button"><span class="n">+</span><b>Bettrahmen Adriano mit Gravitas® <em>optional, empfohlen</em></b><span class="d">Massivholz, metallfrei, handgefertigt. Mit ihm kommt die Neigung ins System: 0, 3,5 oder 5,5° mit einem Handgriff. Ohne Adriano liegt das Schlafsystem in deinem bestehenden Rahmen flach, außer du legst den Flexi ein.</span></button></li>
         </ol>
       </div>
     </div>
@@ -704,8 +769,15 @@ table.vs tbody th{font-weight:600;width:22%}
         <p class="muted">Die fünf Schichten passen in nahezu jeden bestehenden Bettrahmen. Du schläfst auf Naturmaterialien und mit Körpererdung, aber flach.</p>
         <p class="small muted">Neigung: keine</p>
       </article>
+      <article>
+        <span class="eyebrow">Weg 2</span>
+        <h3>Dein Bett mit Flexi</h3>
+        <p class="muted">Dein Rahmen bleibt, der Flexi Einlegerahmen kommt hinein. Ideal mit dem SAMINA Schlafsystem darauf. Passt bei einem Innenmaß von 90 × 200 cm.</p>
+        <p class="small muted">Neigung: 3,5° bis 5,5°</p>
+        <a class="btn line" href="#anfrage" data-intent="flexi">Flexi anfragen <span class="arr">→</span></a>
+      </article>
       <article class="rec">
-        <span class="eyebrow">Weg 2 · empfohlen</span>
+        <span class="eyebrow">Weg 3 · empfohlen</span>
         <h3>Schlafsystem mit Adriano</h3>
         <p class="muted">Dieselben fünf Schichten im Massivholzrahmen Adriano. Dazu kommt Gravitas®: Du stellst die Neigung auf 0, 3,5 oder 5,5° und schläfst schräg.</p>
         <p class="small muted">Neigung: 0 · 3,5 · 5,5°</p>
@@ -822,8 +894,9 @@ table.vs tbody th{font-weight:600;width:22%}
       </div>
 
       <form class="form" id="leadForm" novalidate>
-        <div class="tabs" role="group" aria-label="Anliegen">
+        <div class="tabs t3" role="group" aria-label="Anliegen">
           <button type="button" data-t="produkt" aria-pressed="true">Produktanfrage Adriano</button>
+          <button type="button" data-t="flexi" aria-pressed="false">Flexi für mein Bett</button>
           <button type="button" data-t="probe" aria-pressed="false">Probe liegen in meiner Nähe</button>
         </div>
         <p id="fIntro" class="small muted">Wir melden uns persönlich mit Preis und Varianten für deine Bettgröße.</p>
@@ -843,6 +916,7 @@ table.vs tbody th{font-weight:600;width:22%}
             <label><input type="radio" name="neigung" id="fN0" value="weiß noch nicht" checked>Weiß ich noch nicht</label>
           </div>
         </div>
+        <div class="fld" id="fMassF" hidden><label for="fMass">Innenmaß deines Bettrahmens</label><select id="fMass" name="innenmass"><option>Genau 90 × 200 cm</option><option>Anderes Maß</option><option>Weiß ich nicht, bitte beraten</option></select></div>
         <input type="hidden" name="quelle" value="pillar-schraegbett">
         <label class="consent"><input type="checkbox" id="fOk" required><span>Ich bin einverstanden, dass SAMINA mich zu meiner Anfrage kontaktiert. Hinweise in der Datenschutzerklärung.</span></label>
         <p class="err" id="fErr" role="alert"></p>
@@ -872,7 +946,8 @@ table.vs tbody th{font-weight:600;width:22%}
         <details><summary>Schräg schlafen: Vorteile und Nachteile?</summary><div class="a"><p>Viele, die schräg schlafen, mögen das Liegegefühl so sehr, dass sie nicht mehr flach schlafen wollen. Am Anfang kann sich die Neigung ungewohnt anfühlen, deshalb gibt es die Einstiegsstufe 3,5° und jederzeit den Weg zurück auf 0°. Für Säuglinge unter 12 Monaten ist eine Schräglage nicht geeignet. Bei Venenleiden oder sehr niedrigem Blutdruck vorher ärztlich abklären.</p></div></details>
         <details><summary>Was kostet ein Schrägbett von SAMINA?</summary><div class="a"><p>Der Adriano ist derzeit auf Anfrage erhältlich. Der Preis hängt von Größe, Holzart und Schlafsystem ab. Stell einfach eine Produktanfrage, wir melden uns persönlich.</p></div></details>
         <details><summary>Wo kann ich ein Schrägbett kaufen und Probe liegen?</summary><div class="a"><p>In den SAMINA Filialen in Deutschland, Österreich und der Schweiz und bei unseren Premium-Partnern. Gib im Formular deine PLZ an, wir nennen dir den nächsten Standort.</p></div></details>
-        <details><summary>Kann ich meinen Lattenrost schräg stellen?</summary><div class="a"><p>Ein verstellbarer Lattenrost hebt meist nur das Kopfteil an. Das wirkt wie ein Keil, der Oberkörper knickt ab. Für eine gleichmäßige Schräglage muss sich die ganze Liegefläche neigen, wie beim Rahmen Adriano mit Gravitas®.</p></div></details>
+        <details><summary>Kann ich mein bestehendes Bett zum Schrägbett machen?</summary><div class="a"><p>Ja, mit dem SAMINA Flexi Einlegerahmen. Du legst ihn in deinen bestehenden Bettrahmen ein, und die ganze Liegefläche neigt sich sanft auf 3,5° bis 5,5°. Er passt in Rahmen mit einem Innenmaß von genau 90 × 200 cm und ist auf das SAMINA Schlafsystem ausgelegt. Mit anderen Matratzen ist er kombinierbar, allerdings ohne Gewähr.</p></div></details>
+        <details><summary>Kann ich meinen Lattenrost schräg stellen?</summary><div class="a"><p>Ein verstellbarer Lattenrost hebt meist nur das Kopfteil an. Das wirkt wie ein Keil, der Oberkörper knickt ab. Für eine gleichmäßige Schräglage muss sich die ganze Liegefläche neigen, wie beim Rahmen Adriano mit Gravitas® oder mit dem Flexi Einlegerahmen.</p></div></details>
         <details><summary>Was hat Schlaf mit Longevity zu tun?</summary><div class="a"><p>Im Schlaf regeneriert dein Körper. Wer langfristig gesund und leistungsfähig bleiben will, kommt deshalb am Schlaf nicht vorbei. Bei SAMINA sind Neigung, Körpererdung und Naturmaterialien deshalb ein abgestimmtes System für deinen regenerativen Schlaf.</p></div></details>
         <details><summary>Was bedeutet Gravitas®?</summary><div class="a"><p>Gravitas ist Latein und heißt Schwere. Gesprochen wie geschrieben, nicht „Gravity“. Der Name steht für die Schrägschlaftechnik von SAMINA, die die Schwerkraft mit einer genau definierten Neigung nutzt.</p></div></details>
       </div>
@@ -1061,10 +1136,18 @@ table.vs tbody th{font-weight:600;width:22%}
     },
     {
      "@type": "Question",
+     "name": "Kann ich mein bestehendes Bett zum Schrägbett machen?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ja, mit dem SAMINA Flexi Einlegerahmen. Du legst ihn in deinen bestehenden Bettrahmen ein, und die ganze Liegefläche neigt sich sanft auf 3,5° bis 5,5°. Er passt in Rahmen mit einem Innenmaß von genau 90 × 200 cm und ist auf das SAMINA Schlafsystem ausgelegt. Mit anderen Matratzen ist er kombinierbar, allerdings ohne Gewähr."
+     }
+    },
+    {
+     "@type": "Question",
      "name": "Kann ich meinen Lattenrost schräg stellen?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Ein verstellbarer Lattenrost hebt meist nur das Kopfteil an. Das wirkt wie ein Keil, der Oberkörper knickt ab. Für eine gleichmäßige Schräglage muss sich die ganze Liegefläche neigen, wie beim Rahmen Adriano mit Gravitas®."
+      "text": "Ein verstellbarer Lattenrost hebt meist nur das Kopfteil an. Das wirkt wie ein Keil, der Oberkörper knickt ab. Für eine gleichmäßige Schräglage muss sich die ganze Liegefläche neigen, wie beim Rahmen Adriano mit Gravitas® oder mit dem Flexi Einlegerahmen."
      }
     },
     {
@@ -1296,11 +1379,13 @@ table.vs tbody th{font-weight:600;width:22%}
   /* ── Formular: Anliegen per CTA vorwählen ── */
   const tabs = [...form.querySelectorAll(".tabs button")], fIntro = $("fIntro"), fBtn = $("fBtn"), fErr = $("fErr");
   const TXT = { produkt:["Wir melden uns persönlich mit Preis und Varianten für deine Bettgröße.","Produktanfrage senden"],
+                flexi:["Wir prüfen mit dir, ob der Flexi in deinen Bettrahmen passt, und melden uns mit Preis und Lieferzeit.","Flexi-Anfrage senden"],
                 probe:["Gib deine PLZ an. Wir nennen dir die nächste Filiale oder den nächsten Premium-Partner und reservieren dir einen Termin.","Termin zum Probeliegen anfragen"] };
   let intent = "produkt";
   function setIntent(t){
     intent = t; tabs.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.t===t)));
     fIntro.textContent = TXT[t][0]; fBtn.firstChild.textContent = TXT[t][1] + " ";
+    $("fMassF").hidden = t !== "flexi";
   }
   tabs.forEach(b => b.addEventListener("click", () => setIntent(b.dataset.t)));
   document.querySelectorAll("[data-intent]").forEach(a => a.addEventListener("click", () => setIntent(a.dataset.intent)));
@@ -1310,7 +1395,7 @@ table.vs tbody th{font-weight:600;width:22%}
     if (bad){ fErr.textContent = bad.type === "checkbox" ? "Bitte bestätige die Kontaktaufnahme." : `Bitte prüfe das Feld „${form.querySelector(`label[for="${bad.id}"]`).textContent.replace(/\s*\(.*\)/,"")}“.`; bad.focus(); return; }
     fErr.textContent = "";
     const name = $("fName").value.trim().split(" ")[0];
-    form.innerHTML = `<div class="ok"><span class="eyebrow">Anfrage erhalten</span><p class="yr">Danke, ${name.replace(/[<>&]/g,"")}.</p><p class="muted">${intent === "probe" ? "Wir melden uns mit dem nächsten Standort zum Probeliegen." : "Eine SAMINA Schlafberaterin meldet sich persönlich bei dir."}</p><p class="small muted">Prototyp: Es wurde nichts versendet.</p></div>`;
+    form.innerHTML = `<div class="ok"><span class="eyebrow">Anfrage erhalten</span><p class="yr">Danke, ${name.replace(/[<>&]/g,"")}.</p><p class="muted">${intent === "probe" ? "Wir melden uns mit dem nächsten Standort zum Probeliegen." : intent === "flexi" ? "Wir prüfen dein Maß und melden uns persönlich bei dir." : "Eine SAMINA Schlafberaterin meldet sich persönlich bei dir."}</p><p class="small muted">Prototyp: Es wurde nichts versendet.</p></div>`;
   });
 
 })();
