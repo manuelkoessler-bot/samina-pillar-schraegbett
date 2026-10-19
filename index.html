@@ -164,9 +164,16 @@ body{background:var(--linen);color:var(--ink);font-family:var(--sans);font-size:
   .hero .sub{font-size:14.5px}
   .hero .ctas .btn{padding:14px 16px;font-size:14px}
   .hero .hud{left:16px;right:auto;bottom:auto;top:var(--hudTop,60%);width:min(260px,70vw);justify-items:start;text-align:left}
+  .hero .hud{right:16px;width:auto}
+  .hero .hud .seg{position:absolute;right:0;top:6px;margin:0}
   .deg{font-size:52px}
   .gauge,.hero .hud .gcap{display:none}
   .intro{right:16px;font-size:24px}
+}
+@media (max-width:380px){
+  .hero .ctas{flex-wrap:nowrap}
+  .hero .ctas .btn{padding:12px 11px;font-size:13px;gap:6px}
+  .hero .deg{font-size:46px}
 }
 
 /* ───────── Datenzeile / Jenke ───────── */
@@ -1156,7 +1163,7 @@ table.vs tbody th{font-weight:600;width:22%}
 
   /* ── HERO: Scroll-Scrub. Für WordPress FRAMES auf den Medien-Pfad setzen ── */
   const FRAMES = "frames/g", N = 151, T0 = 111, F35 = 125, frames = new Array(N);
-  const hero = $("hero"), cv = $("cv"), ctx = cv.getContext("2d"), intro = $("intro"), hud = $("hud"),
+  const hero = $("hero"), cv = $("cv"), ctx = cv.getContext("2d"), intro = $("intro"), hud = $("hud"), heroCopy = document.querySelector(".hero .copy"),
         deg = $("deg"), tag = $("tag"), cm = $("cm"), kante = $("kante"), ball = $("ball"), loading = $("loading");
   const angBtns = [...document.querySelectorAll(".ang")];
   let lastP = 0, W = 0, H = 0, sc = 1, ox = 0, oy = 0;
@@ -1203,7 +1210,7 @@ table.vs tbody th{font-weight:600;width:22%}
                  if (oy > 0) ctx.drawImage(img, 0, 0, 2, 2, 0, 0, ox + 1, oy + 1); }
     if (ox + w < W) ctx.drawImage(img, 1278, 0, 2, 720, ox + w - 1, oy, W - ox - w + 1, h);
     ctx.drawImage(img, ox, oy, w, h);
-    if (W <= 760) hud.style.setProperty("--hudTop", Math.max(H*.5, oy + .40*h - 110).toFixed(0) + "px");
+    if (W <= 760) hud.style.setProperty("--hudTop", Math.max(heroCopy.getBoundingClientRect().bottom + 14, oy + .40*h - hud.offsetHeight - 6).toFixed(0) + "px");
   }
   function render(p){
     lastP = p;
