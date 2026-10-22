@@ -1,3 +1,3 @@
-# SAMINA Pillar Page Schrägbett – interne Vorschau
+# Umgezogen
 
-Prototyp für /gravitas-schraegschlafen/ (noindex). Quelle und Build: Claude-Projektordner `Pillar_Schraegschlaf/pillar/`.
+Neue Adresse: https://schlafen.samina.com/schraegbett/ (Repo `manuelkoessler-bot/samina-landingpages`).
